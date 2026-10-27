@@ -1,0 +1,183 @@
+/* Look based on the reference: deep red-black workspace, black icon rail,
+   big condensed title, filter dropdowns on top and a KPI band. */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600&display=swap');
+
+:root {
+  --rail: #050405;
+  --panel: rgba(8, 4, 5, 0.55);
+  --panel-solid: #160a0d;
+  --line: #3d1b21;
+  --line-soft: #2a1317;
+  --accent: #d63a47;
+  --accent-dark: #7a1420;
+  --text: #f2eeee;
+  --muted: #b3a4a6;
+  --dim: #7f6f72;
+}
+
+html, body, .stApp, [class*="st-"], button, input { font-family: 'Barlow', 'Segoe UI', sans-serif; }
+/* keep the icon font for Material icons */
+span[data-testid="stIconMaterial"] { font-family: 'Material Symbols Rounded' !important; }
+
+.stApp {
+  background:
+    radial-gradient(ellipse 80% 60% at 75% 0%, #4a0f18 0%, rgba(74, 15, 24, 0) 70%),
+    linear-gradient(180deg, #2a0b11 0%, #1c0a0d 45%, #140a0c 100%);
+  background-attachment: fixed;
+}
+.block-container { padding: 1.2rem 1.6rem 2rem 1.6rem; max-width: 100%; }
+header[data-testid="stHeader"] { background: transparent; height: 0; }
+[data-testid="stToolbar"], [data-testid="stDecoration"], #MainMenu { display: none !important; }
+
+/* ---------- black icon rail (sidebar) ---------- */
+section[data-testid="stSidebar"] {
+  width: 128px !important; min-width: 128px !important; max-width: 128px !important;
+  background: var(--rail); border-right: 1px solid #1d0d10;
+}
+section[data-testid="stSidebar"] > div { padding-top: 0; }
+[data-testid="stSidebarHeader"], [data-testid="stSidebarCollapseButton"],
+[data-testid="stSidebarCollapsedControl"] { display: none !important; }
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"] { padding: 0 !important; }
+section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] { padding: 18px 12px !important; }
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"],
+section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"],
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"],
+section[data-testid="stSidebar"] [data-testid="stElementContainer"],
+section[data-testid="stSidebar"] .stButton { width: 100% !important; }
+section[data-testid="stSidebar"] .stButton button span[data-has-shortcut] {
+  display: flex !important; flex-direction: column !important; align-items: center; gap: 4px;
+}
+section[data-testid="stSidebar"] .stButton button p { font-size: 0.82rem; margin: 0; }
+section[data-testid="stSidebar"] .stButton button {
+  width: 100% !important; height: 78px; flex-direction: column; gap: 2px; padding: 6px 2px;
+  white-space: nowrap;
+  background: #1a1a1c; border: 1px solid #2c2c30; border-radius: 4px; color: var(--muted);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.86rem; letter-spacing: 0.04em; text-transform: uppercase;
+}
+section[data-testid="stSidebar"] .stButton button span[data-testid="stIconMaterial"] { font-size: 1.9rem; color: #cfc7c8; }
+section[data-testid="stSidebar"] .stButton button:hover { border-color: var(--accent); color: var(--text); }
+section[data-testid="stSidebar"] .stButton button[kind="primary"] {
+  background: #3a0f17; border: 1px solid var(--accent); color: var(--text);
+}
+section[data-testid="stSidebar"] .stButton button[kind="primary"] span[data-testid="stIconMaterial"] { color: #ff8b93; }
+.rail-mark { width: 72px; height: 72px; margin: 4px auto 20px auto; }
+.rail-mark img { width: 100%; height: 100%; display: block; }
+.rail-foot { margin-top: 26px; border-top: 1px solid #2a2a2e; padding-top: 12px; font-size: 0.7rem; color: var(--dim); text-align: center; line-height: 1.35; }
+
+/* ---------- title block ---------- */
+.brand-block { display: flex; gap: 18px; align-items: center; }
+.brand-logo svg { width: 118px; height: 118px; display: block; }
+.brand-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 2.75rem; line-height: 1.0;
+  white-space: nowrap;
+  color: #ece3e4; letter-spacing: 0.01em;
+}
+.brand-rule { border-top: 2px solid #8a7c7f; margin: 8px 0 6px 0; width: 100%; }
+.brand-page { font-family: 'Barlow Condensed', sans-serif; font-size: 1.65rem; color: #cbbdbf; }
+.brand-note { font-size: 0.82rem; color: var(--dim); margin-top: 2px; }
+
+/* ---------- filters on top ---------- */
+.stMultiSelect label p, .stSelectbox label p, .stSlider label p {
+  font-family: 'Barlow Condensed', sans-serif !important; font-size: 1.15rem !important;
+  color: #d9cfd0 !important; font-weight: 500;
+}
+div[data-baseweb="select"] > div {
+  background: #050405 !important; border: 1px solid #77686b !important; border-radius: 2px !important;
+  min-height: 42px;
+}
+div[data-baseweb="select"] span, div[data-baseweb="select"] input { color: var(--text) !important; }
+div[data-baseweb="tag"] { background: #4a121b !important; border-radius: 2px !important; }
+div[data-baseweb="popover"] ul { background: #0d0809 !important; }
+.stSlider [data-baseweb="slider"] div[role="slider"] { background: var(--accent) !important; border-color: var(--accent) !important; }
+
+/* ---------- KPI band ---------- */
+.kpi-band {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 10px;
+  background: linear-gradient(180deg, rgba(60, 12, 20, 0.55), rgba(25, 8, 11, 0.55));
+  border: 1px solid var(--line-soft); padding: 18px 8px 16px 8px;
+}
+.kpi-band .kpi { text-align: center; border-right: 1px solid rgba(255, 255, 255, 0.05); padding: 0 6px; }
+.kpi-band .kpi:last-child { border-right: none; }
+.kpi-band .kpi-label { font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; color: #cbbdbf; }
+.kpi-band .kpi-value { font-family: 'Barlow Condensed', sans-serif; font-size: 2.6rem; font-weight: 600; color: #f3eded; line-height: 1.1; }
+.kpi-band .kpi-note { font-size: 0.74rem; color: var(--dim); }
+
+/* KPI cards used inside pages */
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 4px 0 12px 0; }
+.kpi-row .kpi { background: var(--panel); border: 1px solid var(--line-soft); padding: 12px 14px; text-align: center; }
+.kpi-row .kpi-label { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; color: #cbbdbf; }
+.kpi-row .kpi-value { font-family: 'Barlow Condensed', sans-serif; font-size: 2.1rem; font-weight: 600; color: var(--text); }
+.kpi-row .kpi-note { font-size: 0.74rem; color: var(--dim); }
+
+/* ---------- panels ---------- */
+div[data-testid="stVerticalBlockBorderWrapper"]:has(> div > [data-testid="stVerticalBlock"]) {
+  background: var(--panel); border: 1px solid var(--line-soft) !important; border-radius: 2px;
+}
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1.35rem; font-weight: 500;
+  color: #ddd2d3; text-align: center; margin: 2px 0 2px 0;
+}
+.section-text { font-size: 0.86rem; color: var(--muted); text-align: center; margin-bottom: 8px; }
+.note { font-size: 0.8rem; color: var(--dim); line-height: 1.45; margin-top: 4px; margin-bottom: calc(1rem + 6px); }
+/* boxes in the same row end at the same height */
+[data-testid="stColumn"] > [data-testid="stVerticalBlock"] { height: 100%; }
+[data-testid="stColumn"] > [data-testid="stVerticalBlock"] > [data-testid="stLayoutWrapper"]:only-child { flex: 1; }
+[data-testid="stColumn"] > [data-testid="stVerticalBlock"] > [data-testid="stLayoutWrapper"]:only-child > [data-testid="stVerticalBlock"] { height: 100%; }
+.page-rule { border-top: 1px solid var(--line); margin: 14px 0 12px 0; }
+
+/* segmented controls, tabs, toggles */
+div[data-testid="stButtonGroup"] button { background: #050405; border-color: #4b3b3f; color: var(--muted); border-radius: 2px; }
+div[data-testid="stButtonGroup"] button[kind*="Active"], div[data-testid="stButtonGroup"] button[aria-checked="true"] {
+  background: #3a0f17; border-color: var(--accent); color: var(--text);
+}
+button[data-baseweb="tab"] p { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; letter-spacing: 0.03em; }
+div[data-baseweb="tab-highlight"] { background-color: var(--accent); }
+div[data-baseweb="tab-border"] { background-color: var(--line); }
+.stButton button[kind="secondary"] { background: #050405; border: 1px solid #77686b; border-radius: 2px; }
+
+/* tables */
+[data-testid="stDataFrame"] { border: 1px solid var(--line-soft); }
+
+/* insights */
+.insights { background: var(--panel); border: 1px solid var(--line-soft); border-left: 3px solid var(--accent); padding: 14px 16px; margin: 8px 0 10px 0; }
+.insights-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; margin-bottom: 6px; color: var(--text); }
+.insight { color: var(--text); font-size: 0.92rem; margin: 6px 0; line-height: 1.45; }
+.tag { display: inline-block; min-width: 92px; text-align: center; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+       text-transform: uppercase; border-radius: 2px; padding: 2px 6px; margin-right: 10px; }
+.tag-count { background: #2e2a2c; color: var(--text); }
+.tag-percent { background: #5e1622; color: #ffd6d9; }
+.tag-missing-info { background: #3b3220; color: #eedfb0; }
+
+.footer { margin-top: 22px; font-size: 0.74rem; color: var(--dim); border-top: 1px solid var(--line); padding-top: 10px; }
+
+/* ---------- active filter chips ---------- */
+.st-key-chip_row:has(button) { margin-top: 16px; }
+.chip-label { font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; color: var(--muted); margin-right: 6px; }
+.stButton button[kind="tertiary"] {
+  background: #3a0f17; border: 1px solid var(--accent); border-radius: 999px; padding: 2px 12px;
+  color: var(--text); font-size: 0.85rem; min-height: 30px;
+}
+.stButton button[kind="tertiary"]:hover { background: #5a1621; }
+
+/* ---------- Data page fact cards ---------- */
+.fact-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 12px; }
+.fact { background: var(--panel); border: 1px solid var(--line-soft); border-top: 3px solid var(--accent); padding: 14px 16px; }
+.fact-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.45rem; color: var(--text); }
+.fact-text { font-size: 0.92rem; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+[data-testid="stExpander"] { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 2px; }
+[data-testid="stExpander"] summary p { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; }
+
+/* game page: small title, no filters, little space */
+.game-header { display: flex; align-items: center; gap: 14px; margin: -6px 0 6px 0; }
+.game-header .brand-logo svg { width: 58px; height: 58px; }
+.game-header .brand-title { font-size: 1.7rem; line-height: 1.05; }
+.game-header .brand-page { font-size: 1.1rem; }
+
+/* smooth updates: no grey fade while the page reruns */
+[data-stale="true"], [data-testid="stElementContainer"][data-stale] {
+  opacity: 1 !important; filter: none !important; transition: none !important;
+}
+
+/* hide the invisible scroll helper completely, so it never adds a gap or makes the page jump */
+[data-testid="stElementContainer"]:has(iframe[height="0"]) { display: none !important; }
+
